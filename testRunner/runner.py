@@ -135,9 +135,9 @@ def open_web_server():
 
 if __name__ == '__main__':
         ga = get_devices()
-      #  webserver=open_web_server()
-        reports=report()
-     #   emails=get_email()
+#webserver=open_web_server()
+reports=report()
+# emails=get_email()
 #        runnerCase=runnerCaseWeb()
 #        if adbCommon.attached_devices():
 #           p = Process(target=open_web_server, args=())
