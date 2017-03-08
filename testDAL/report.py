@@ -1,4 +1,4 @@
-__author__ = 'shikun'
+__author__ = 'luoquan'
 import xlsxwriter
 from common.variable import GetVariable as gv
 class OperateReport:
@@ -7,7 +7,7 @@ class OperateReport:
         self.data = data
     def init(self, worksheet):
          # 设置列行的宽高
-        worksheet.set_column("A:A", 15)
+        worksheet.set_column("A:A", 20)
         worksheet.set_column("B:B", 20)
         worksheet.set_column("C:C", 20)
         worksheet.set_column("D:D", 20)
@@ -29,15 +29,16 @@ class OperateReport:
         define_format_H2.set_border(1)
         define_format_H1.set_align("center")
         define_format_H2.set_align("center")
-        define_format_H2.set_bg_color("blue")
-        define_format_H2.set_color("#ffffff")
+        define_format_H2.set_bg_color("green")
+        define_format_H2.set_color("#008000")
 
-        worksheet.merge_range('A1:E1', '测试报告总概况', define_format_H1)
+        worksheet.insert_image("A1:C1","F:\时讯汇科技（北京）\时讯汇信息\时讯汇·科技\时讯汇·科技\时讯汇·科技-01.png")
+        worksheet.merge_range('C1:E1', '测试报告总概况', define_format_H1)
         worksheet.merge_range('A2:E2', '测试概括', define_format_H2)
 
         _write_center(worksheet, "A3", 'web名称', self.wd)
-        _write_center(worksheet, "A4", 'APP大小', self.wd)
-        _write_center(worksheet, "A5", 'APP版本', self.wd)
+        _write_center(worksheet, "A4", '浏览器类型', self.wd)
+        _write_center(worksheet, "A5", '浏览器版本', self.wd)
         _write_center(worksheet, "A6", '测试日期', self.wd)
 
 
@@ -63,7 +64,7 @@ class OperateReport:
         _write_center(worksheet, "E3", "脚本语言", self.wd)
 
 
-        worksheet.merge_range('E4:E6', 'appium+python3', get_format_center(self.wd))
+        worksheet.merge_range('E4:E6', 'selenium+python3', get_format_center(self.wd))
 
         # 测试手机详情
         worksheet.merge_range('A9:J9', '测试手机详情', define_format_H2)
@@ -200,11 +201,11 @@ def set_row(worksheet, num, height):
 #     worksheet.insert_chart('A9', chart1, {'x_offset': 25, 'y_offset': 10})
 
 if __name__ == '__main__':
-    data ={'test_date': '2016-12-01 15:58 PM', 'test_failed': 1,
+    data ={'test_date': '2017-03-07 15:30 PM', 'test_failed': 1,
  'info': [{'test_men_avg': '8%', 'test_cpu_avg': '0%', 'test_fps_avg': '0.00', 'test_name': 'test_home_feed', 'test_cpu_max': '0.0%', 'test_intr': '闪退测试', 'test_reason': None, 'test_phone_name': 'Huawei_H60-L02_android_4.4.2', 'test_men_max': '23M', 'test_image': None, 'test_module': '闪退测试', 'test_log': None, 'test_fps_max': '0.0', 'test_id': 1001, 'test_result': '成功'}, {'test_men_avg': '4%', 'test_cpu_avg': '23%', 'test_fps_avg': '0.00', 'test_name': 'test_home_feed', 'test_cpu_max': '46.0%', 'test_intr': '闪退测试', 'test_reason': '崩溃了', 'test_phone_name': 'Huawei_H60-L02_android_4.4.2', 'test_men_max': '23M', 'test_image': None, 'test_module': '闪退测试', 'test_log': 'd://storage/emulated/0/crash/2016-12-01-15-58-48.log', 'test_fps_max': '0.0', 'test_id': 1001, 'test_result': '失败'}],
- 'test_sum_date': '24秒', 'app_name': "'monkneyTest'", 'test_success': 2, 'app_size': '0M',
+ 'test_sum_date': '24秒', 'app_name': "墨契云文档", 'test_success': 2, 'app_size': 'Chrome',
  'init': [{'phone_avg_use_raw': '8%', 'phone_pix': ' 1080x1920\n', 'phone_avg_use_cpu': '0%', 'fps_avg': '0.00', 'fps_max': '0.0', 'phone_raw': '3014M', 'phone_name': 'Huawei_H60-L02_android_4.4.2', 'phone_avg_max_use_cpu': '0.0%', 'phone_max_use_raw': '23M', 'phone_cpu': '8核'}, {'phone_name': 'Huawei_H60-L02_android_4.4.2', 'phone_pix': ' 1080x1920\n', 'phone_avg_use_cpu': '0', 'fps_avg': '0', 'fps_max': '0', 'phone_raw': '3014M', 'phone_avg_use_raw': '0', 'phone_cpu': '8核', 'phone_max_use_raw': '0', 'phone_avg_max_use_cpu': '0'}],
-'test_sum': 3, 'app_version': "'1.0'"}
+'test_sum': 3, 'app_version': "你自己决定"}
     workbook = xlsxwriter.Workbook('GetReport.xlsx')
     worksheet = workbook.add_worksheet("测试总况")
     worksheet2 = workbook.add_worksheet("测试详情")

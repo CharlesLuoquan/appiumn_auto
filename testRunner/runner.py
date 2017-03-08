@@ -1,7 +1,9 @@
-__author__ = 'shikun'
+__author__ = 'luo'
 # -*- coding: utf-8 -*-
 import sys
 sys.path.append("..")
+#对于模块和自己写的程序不在同一个目录下，
+#可以把模块的路径通过sys.path.append(路径)添加到程序中。
 import datetime
 import xlsxwriter
 import time
@@ -136,7 +138,7 @@ if __name__ == '__main__':
       #  webserver=open_web_server()
         reports=report()
      #   emails=get_email()
-        runnerCase=runnerCaseWeb()
+#        runnerCase=runnerCaseWeb()
 #        if adbCommon.attached_devices():
 #           p = Process(target=open_web_server, args=())
 #            p.start()
